@@ -1,0 +1,22 @@
+import random
+
+# Definir parámetros de la matriz
+num_ciudades = 3
+num_semanas = 2
+dias_semana = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]
+
+# Crear matriz 3D con temperaturas aleatorias entre 15°C y 35°C
+matriz_temperaturas = [
+    [  # Para cada ciudad
+        [random.randint(15, 35) for _ in dias_semana]  # Para cada día de la semana
+        for _ in range(num_semanas)  # Para cada semana
+    ]
+    for _ in range(num_ciudades)  # Para cada ciudad
+]
+
+# Calcular promedio de temperaturas por ciudad y semana
+for i, ciudad in enumerate(matriz_temperaturas):
+    print(f"\nCiudad {i+1}:")
+    for j, semana in enumerate(ciudad):
+        promedio = sum(semana) / len(semana)  # Suma de temperaturas de la semana dividido por 7
+        print(f"  Semana {j+1}: Promedio de temperatura = {promedio:.2f}°C")
